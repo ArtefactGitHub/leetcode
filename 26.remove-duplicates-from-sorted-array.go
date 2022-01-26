@@ -8,19 +8,15 @@ package leetcode
 
 // @lc code=start
 func removeDuplicates(nums []int) int {
-	var array []int
-	for i, x := range nums {
-		len := len(array)
-		if i == 0 || array[len-1] != x {
-			array = append(array, x)
+	var counter int
+	for i := 0; i < len(nums); i++ {
+		if i == 0 || nums[i] != nums[counter-1] {
+			nums[counter] = nums[i]
+			counter++
 		}
 	}
 
-	for i := 0; i < len(array); i++ {
-		nums[i] = array[i]
-	}
-
-	return len(array)
+	return counter
 }
 
 // @lc code=end
